@@ -8,3 +8,16 @@ before_install:
 
 script:
   - docker run anhletuanqt/docker_ci_cd npm run test -- --coverage
+
+deploy:
+  provider: 'elasticbeanstalk'
+  region: 'us-east-1'
+  app: 'docer_ci_cd'
+  env: 'DocerCiCd-env'
+  bucket_name: 'elasticbeanstalk-us-east-1-757943668377'
+  bucket_path: 'docer_ci_cd'
+  on:
+    branch: 'master'
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_KEY
