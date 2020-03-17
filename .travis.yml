@@ -8,11 +8,13 @@ language: node_js
 node_js:
   - 10
 
+install: travis_wait mvn install
+
 before_install:
   - docker build -t anhletuanqt/docker_ci_cd -f Dockerfile.dev .
 
 script:
-  - docker run anhletuanqt/docker_ci_cd npm run test -- --coverage --watch=false
+  - docker run anhletuanqt/docker_ci_cd npm run test -- --coverage
 
 deploy:
   provider: 'elasticbeanstalk'
