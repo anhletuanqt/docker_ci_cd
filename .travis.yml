@@ -3,6 +3,11 @@ sudo: required
 services:
   - docker
 
+language: node_js
+
+node_js:
+  - 10
+
 before_install:
   - docker build -t anhletuanqt/docker_ci_cd -f Dockerfile.dev .
 
