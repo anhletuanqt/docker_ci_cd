@@ -11,12 +11,11 @@ node_js:
 before_install:
   - docker build -t anhletuanqt/docker_ci_cd -f Dockerfile.dev .
 
-# install:
-#   - travis_wait
+install:
+  - travis_wait 20
 
 script:
   - docker run anhletuanqt/docker_ci_cd npm run test -- --coverage
-  - 'travis_wait 30 sleep 1800 &'
 
 deploy:
   provider: 'elasticbeanstalk'
